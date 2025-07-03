@@ -1,0 +1,147 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+body {
+    font-family: "Poppins", sans-serif;
+    background: url('img/black-background.jpg') no-repeat center center;
+    background-size: cover;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    user-select: none;
+}
+
+.card {
+    background: rgba(255, 255, 255, 0.19);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.23);
+    padding: 30px;
+    text-align: center;
+    width: 80%;
+    max-width: 600px;
+    height: 53vh;
+}
+
+.card{
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.card h2{
+    margin-bottom: 0;
+}
+
+.card p{
+    font-size: 15px;
+    font-style: italic;
+    margin-top: 0;
+}
+
+.card .choice {
+    display: inline-block;
+    margin: 0 10px;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    border: 2px solid white;
+    background-color: #333333;
+    transition: background-color 0.3s, transform 0.15s;
+}
+
+.choice-wrap{
+    margin-top: 20px;
+}
+
+.card .choice:hover {
+    background-color: white;
+    color: #333333;
+    transform: scale(1.2);
+}
+
+.card .result {
+    font-size: 20px;
+    margin-top: 20px;
+}
+
+i.fa {
+    margin-right: 5px;
+}
+
+i {
+    font-size: 25px;
+}
+
+.player-tag, .computer-tag{
+    width: 100px;
+    font-size: 20px;
+}
+
+.player-tag{
+    text-align: end;
+    margin: auto 0;
+    padding-right: 10px;
+}
+
+.computer-tag{
+    text-align: start;
+    margin: auto 0;
+    padding-left: 10px;
+}
+
+.result-wrap{
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    align-items: center;
+}
+
+.result-wrap i{
+    margin: 10px 0;
+    font-size: 40px;
+}
+
+.result-player{
+    width: 100px;
+}
+
+.score{
+    width: 80px;
+}
+
+.result-computer{
+    width: 100px
+}
+
+.play-result{
+    color: yellow;
+    font-size: 22px;
+    font-weight: 650;
+    margin-top: 15px;
+    text-shadow: 1px 1px rgba(0, 0, 0, 0.6);
+}
+
+#resetBtn {
+    margin-top: 25px;
+    padding: 10px 20px;
+    background-color: #ffffff;
+    color: #333333;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    transition: background 0.3s ease;
+    font-size: 15px;
+}
+
+#resetBtn i {
+    font-size: 15px;
+}
+
+#resetBtn:hover {
+    background-color: #333333;
+    color: white;
+}

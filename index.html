@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Rock Paper Scissors</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+</head>
+<body>
+
+  <div class="card">
+    <h2>RPS Mini Games</h2>
+    <p>Rock, Paper, or Scissors - Choose wisely!</p>
+    <div class="result" id="result"></div>
+
+    <div class="choice-wrap">        
+      <div class="choice" data-choice="✊"><i class="fa-regular fa-hand-back-fist"></i></div>
+      <div class="choice" data-choice="✋"><i class="fa-regular fa-hand"></i></div>
+      <div class="choice" data-choice="✌️"><i class="fa-regular fa-hand-peace"></i></div>
+    </div>
+
+    <button id="resetBtn">
+      <i class="fa-solid fa-arrow-rotate-left"></i> Reset Score
+    </button>
+    
+  </div>
+
+  <script>
+    const choices = ['✊', '✋', '✌️'];
+    const choiceElements = document.querySelectorAll('.choice');
+    let playerScore = 0;
+    let computerScore = 0;
+
+    document.getElementById('resetBtn').addEventListener('click', () => {
+      playerScore = 0;
+      computerScore = 0;
+      document.querySelector('.result').innerHTML = `
+        <div class="result-wrap">
+          <div class="result-player">
+            <div><i class="fa-solid fa-hand-back-fist"></i></div>
+            <div class="player">Player</div>
+          </div>
+          <div class="score">0 : 0</div>
+          <div class="result-computer">
+            <div><i class="fa-solid fa-hand-back-fist"></i></div>
+            <div class="computer">Computer</div>
+          </div>
+        </div>
+        <div class="play-result">
+          Click to begin!
+        </div>
+      `;
+    });
+
+
+    document.getElementById('result').innerHTML = `
+      <div class="result-wrap">
+        <div class="result-player">
+          <div><i class="fa-solid fa-hand-back-fist"></i></div>
+          <div class="player">Player</div>
+        </div>
+        <div class="score">0 : 0</div>
+        <div class="result-computer">
+          <div><i class="fa-solid fa-hand-back-fist"></i></div>
+          <div class="computer">Computer</div>
+        </div>
+      </div>
+      <div class="play-result">
+        Click to begin!
+      </div>
+    `;
+
+    choiceElements.forEach(choice => {
+      choice.addEventListener('click', () => {
+        const playerChoice = choice.dataset.choice;
+        playRound(playerChoice);
+      });
+    });
+
+    function playRound(playerChoice) {
+      const computerChoice = getComputerChoice();
+      document.querySelector('.result').innerHTML = `
+        <div class="result-wrap">
+          <div class="result-player">
+            <div>${convertChoiceToIcon(playerChoice)}</div>
+            <div class="player">Player</div>
+          </div>
+          <div class="score">${playerScore} : ${computerScore}</div>
+          <div class="result-computer">
+            <div>${convertChoiceToIcon(computerChoice)}</div>
+            <div class="computer">Computer</div>
+          </div>
+        </div>
+        <div class="play-result">
+          ${getResult(playerChoice, computerChoice)}
+        </div>
+      `;
+
+      updateScore(playerChoice, computerChoice);
+    }
+
+    function getComputerChoice() {
+      return choices[Math.floor(Math.random() * choices.length)];
+    }
+
+    function getResult(player, computer) {
+      if (player === computer) return "It's a draw!";
+      if ((player === '✊' && computer === '✌️') || 
+          (player === '✋' && computer === '✊') || 
+          (player === '✌️' && computer === '✋')) return "You Win!";
+      return "You Lose!";
+    }
+
+    function convertChoiceToIcon(symbol) {
+      switch (symbol) {
+        case '✊': return '<i class="fa-solid fa-hand-back-fist"></i>';
+        case '✋': return '<i class="fa-solid fa-hand"></i>';
+        case '✌️': return '<i class="fa-solid fa-hand-peace"></i>';
+        default: return '';
+      }
+    }
+
+    function updateScore(player, computer) {
+      const playerElement = document.querySelector(`[data-choice="${player}"]`);
+      const computerElement = document.querySelector(`[data-choice="${computer}"]`);
+      const result = getResult(player, computer);
+
+      if (result === "You Win!") {
+        playerScore++;
+        confetti({
+          particleCount: 120,
+          angle: 60,
+          spread: 55,
+          origin: { x: 0, y: 0.6 }
+        });
+        confetti({
+          particleCount: 120,
+          angle: 120,
+          spread: 55,
+          origin: { x: 1, y: 0.6 }
+        });
+      } else if (result === "You Lose!") {
+        computerScore++;
+      }
+
+      document.querySelector('.score').textContent = `${playerScore} : ${computerScore}`;
+    }
+  </script>
+</body>
+</html>
