@@ -37,7 +37,7 @@ This project was developed with the assistance of generative AI tools. AI helped
 
 The use of AI served as a development companion, streamlining both coding and design processes.
 
-## Live Demo
+### Live Demo
 
 [Click here to play](https://rps-minigame.vercel.app/)
 
