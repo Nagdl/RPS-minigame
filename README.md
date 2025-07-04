@@ -13,6 +13,7 @@ Key highlights of the game include:
 - **CSS** – for styling and responsive layout
 - **JavaScript** – for game logic and interactivity
 - **Font Awesome** – for using hand gesture icons
+- **IBM Granite AI** – as a generative AI assistant to help with code generation and UI design
 
 ## Features
 
