@@ -36,3 +36,8 @@ This project was developed with the assistance of generative AI tools. AI helped
 - Debugging and improving user experience for responsiveness and clarity
 
 The use of AI served as a development companion, streamlining both coding and design processes.
+
+## Live Demo
+
+[Click here to play](https://rps-minigame.vercel.app/)
+
